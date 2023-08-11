@@ -19,11 +19,11 @@ public class Main {
         alanalbum.addsongtoalbum("Alone" , 7.0);
 
         LinkedList<Song> myplaylist = new LinkedList<>();
-        System.out.println(arjitalbum.addtoplaylisttoalbum("Kesaria" , myplaylist));
-        System.out.println(arjitalbum.addtoplaylisttoalbum(2,myplaylist));
-        System.out.println(arjitalbum.addtoplaylisttoalbum("Tum kya mile" , myplaylist));
-        System.out.println(arjitalbum.addtoplaylisttoalbum(3 , myplaylist));
-        System.out.println(alanalbum.addtoplaylisttoalbum(1 , myplaylist));
+        System.out.println(arjitalbum.addToPlaylistFromAlbum("Kesaria" , myplaylist));
+        System.out.println(arjitalbum.addToPlaylistFromAlbum(3,myplaylist));
+        System.out.println(arjitalbum.addToPlaylistFromAlbum("Tum kya mile" , myplaylist));
+        System.out.println(arjitalbum.addToPlaylistFromAlbum(4 , myplaylist));
+        System.out.println(alanalbum.addToPlaylistFromAlbum(1 , myplaylist));
 
 
 
@@ -37,7 +37,8 @@ public class Main {
             return;
         }
         ListIterator<Song> itr = myplaylist.listIterator();
-        System.out.println("Now Printing"  + itr.next());
+        System.out.println("Now Playing"  + itr.next());
+        boolean wasnext = true;
 
         Scanner sc = new Scanner(System.in);
 
@@ -54,6 +55,10 @@ public class Main {
                     printMenu();
                     break;
                 case 2:
+                    if(wasnext == false)
+                    {
+                        itr.next();
+                    }
                     if(!itr.hasNext()){
                         System.out.println("Nomore song");
                     }
@@ -62,6 +67,10 @@ public class Main {
                     }
                     break;
                 case 3:
+                    if(wasnext == true)
+                    {
+                        itr.previous();
+                    }
                     if(!itr.hasPrevious()){
                         System.out.println("you are at start your playlist");
                     }
@@ -70,6 +79,15 @@ public class Main {
                     }
                     break;
                 case 4:
+                    if(wasnext == true)
+                    {
+                        System.out.println("curr song" + itr.previous());
+                        wasnext = false;
+                    }
+                    else {
+                        System.out.println("curr song" + itr.next());
+                        wasnext = true;
+                    }
                     break;
                 case 5:
                     break;

@@ -59,21 +59,21 @@ public class Album {
         return "song already exist";
     }
 
-    public String addtoplaylisttoalbum(String title , LinkedList<Song> playlist){
-        for(Song song : songs){
-            if(song.getTitle().equals(title)){
+    public String addToPlaylistFromAlbum(String title, LinkedList<Song> playlist) {
+        for (Song song : songs) {
+            if (song.getTitle().equals(title)) {
                 playlist.add(song);
-                return "song added succesfully";
+                return "Song added to the playlist";
             }
         }
-        return "song not found";
+        return "Song not found in the album";
     }
 
-    public String addtoplaylisttoalbum(int num , LinkedList<Song> playlist){
-        int n = num-1;
-        if(n >= 0 && songs.size() <= n){
+    public String addToPlaylistFromAlbum(int num, LinkedList<Song> playlist) {
+        int n = num - 1;
+        if (n >= 0 && n < songs.size()) {
             playlist.add(songs.get(n));
-            return "Song has been added";
+            return "Song has been added to the playlist";
         }
         return "Incorrect song number";
     }
